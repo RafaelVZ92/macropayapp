@@ -1,0 +1,67 @@
+[versions]
+androidxNavigation = "2.5.2"
+groupie = "2.9.0"
+dagger = "2.44.2"
+okhttp = "4.10.0"
+retrofit = "2.9.0"
+serialization = "1.3.3"
+assistedInject = "0.5.2"
+kotlin = "1.6.21"
+minSdk = "26"
+targetSdk = "32"
+compileSdk = "33"
+
+[libraries]
+androidx-appcompat = "androidx.appcompat:appcompat:1.4.2"
+androidx-core-ktx = "androidx.core:core-ktx:1.8.0"
+androidx-test-ext = "androidx.test.ext:junit:1.1.4"
+junit = "junit:junit:4.13.2"
+androidx-test-espresso = "androidx.test.espresso:espresso-core:3.5.0"
+material = "com.google.android.material:material:1.6.1"
+gson = "com.google.code.gson:gson:2.9.1"
+
+androidx-cardview = "androidx.cardview:cardview:1.0.0"
+androidx-constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.4"
+androidx-recyclerview = "androidx.recyclerview:recyclerview:1.2.1"
+
+# okhttp Libraries
+okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+okhttp-logging = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
+okhttp-mockwebserver = { module = "com.squareup.okhttp3:mockwebserver", version.ref = "okhttp" }
+okhttp-eventsource = "com.launchdarkly:okhttp-eventsource:2.3.1"
+
+# retrofit Libraries
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+retrofit-adapter-rxjava = { module = "com.squareup.retrofit2:adapter-rxjava2", version.ref = "retrofit" }
+retrofit-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+retrofit-converter-xml = { module = "com.squareup.retrofit2:converter-simplexml", version.ref = "retrofit" }
+retrofit-mock = { module = "com.squareup.retrofit2:retrofit-mock", version.ref = "retrofit" }
+
+# rx Libraries
+rx-java = "io.reactivex.rxjava2:rxjava:2.2.21"
+rx-android = "io.reactivex.rxjava2:rxandroid:2.1.1"
+rx-kotlin = "io.reactivex.rxjava2:rxkotlin:2.4.0"
+rx-relay = "com.jakewharton.rxrelay2:rxrelay:2.1.1"
+rx-network = "com.github.pwittchen:reactivenetwork-rx2:3.0.8"
+rx-lint = "nl.littlerobots.rxlint:detector:1.7.8"
+
+# Gropie Libraries
+groupie = { module = "com.github.lisawray.groupie:groupie", version.ref = "groupie" }
+groupie-viewbinding = { module = "com.github.lisawray.groupie:groupie-viewbinding", version.ref = "groupie" }
+
+# Dagger Libaries
+dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
+dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
+dagger-android = { module = "com.google.dagger:dagger-android-support", version.ref = "dagger" }
+dagger-android-compiler = { module = "com.google.dagger:dagger-android-processor", version.ref = "dagger" }
+dagger-assisted = { module = "com.squareup.inject:assisted-inject-annotations-dagger2", version.ref = "assistedInject" }
+dagger-assisted-compiler = { module = "com.squareup.inject:assisted-inject-processor-dagger2", version.ref = "assistedInject" }
+
+# Navigation Libaries
+navigation-safeArgs-plugin = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "androidxNavigation" }
+androidx-navigation-fragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "androidxNavigation" }
+androidx-navigation-ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "androidxNavigation" }
+
+# Kotlin Libaries
+kotlin-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-serialization-plugin = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
