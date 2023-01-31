@@ -1,6 +1,7 @@
 package com.rafaelvelazquez.macropayapp.di
 
 import android.app.Application
+import androidx.fragment.app.FragmentActivity
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.DispatchingAndroidInjector
@@ -29,3 +30,10 @@ interface AppComponent :
 
     fun androidInjector(): DispatchingAndroidInjector<Any>
 }
+
+val FragmentActivity.injector
+    get() = DaggerAppComponent
+        .builder()
+        .application(application)
+        .build()
+

@@ -13,7 +13,7 @@ fun createRetrofitBuilder(
     gson: Gson
 ): Retrofit.Builder = Retrofit.Builder()
     .callFactory { httpClient.newCall(it) }
-    .baseUrl(MOVIES_URL)
+    .baseUrl(BASE_URL)
     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
     .addConverterFactory(GsonConverterFactory.create(gson))
 
@@ -24,4 +24,4 @@ fun createOkHttpBuilder(
         interceptors?.forEach { addInterceptor(it) }
     }
 
-const val MOVIES_URL = "https://api.themoviedb.org/3/"
+const val BASE_URL = "http://testandroid.macropay.com.mx"

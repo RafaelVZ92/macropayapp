@@ -1,17 +1,16 @@
 package com.rafaelvelazquez.macropayapp.retrofit
 
-import com.rafaelvelazquez.macropayapp.data.remote.LoginRequest
 import com.rafaelvelazquez.macropayapp.data.remote.LoginResponse
 import io.reactivex.Single
-import retrofit2.http.Body
-import retrofit2.http.Headers
-import retrofit2.http.POST
+import okhttp3.RequestBody
+import retrofit2.http.*
 
 interface RestServiceApi {
 
-    @Headers("Content-Type: application/json")
-    @POST
-    fun loginApp(
-        @Body loginRequest: LoginRequest
+    @Multipart
+    @POST("/")
+    fun loginUSer(
+        @Part("email") email: RequestBody,
+        @Part("password") passwordB: RequestBody
     ): Single<LoginResponse>
 }
