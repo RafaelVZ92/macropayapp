@@ -32,7 +32,7 @@ open class BaseFragmentActivity: AppCompatActivity() {
 
     fun showLoading(show: Boolean) {
         if (show) showProgressDialog(
-            R.string.app_name
+            R.string.text_loading
         ) else dismissProgressDialog()
     }
     private fun showProgressDialog(@StringRes idMessage: Int) =

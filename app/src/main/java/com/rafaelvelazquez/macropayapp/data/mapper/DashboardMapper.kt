@@ -28,7 +28,6 @@ class DashboardMapper @Inject constructor() : Mapper<LoginResponse, DashboardDom
             token
         )
 
-
     private fun handleDashboardData(token: String): DashboardResponse {
         val gson = Gson()
         val mDecode = decodeToken(token)
@@ -39,9 +38,7 @@ class DashboardMapper @Inject constructor() : Mapper<LoginResponse, DashboardDom
         val parts = jwt.split(".")
         return try {
             val charset = charset("UTF-8")
-            //val header = String(Base64.getUrlDecoder().decode(parts[0].toByteArray(charset)), charset)
             val payload = String(Base64.getUrlDecoder().decode(parts[1].toByteArray(charset)), charset)
-            //header
             payload
         } catch (e: Exception) {
             throw IllegalArgumentException(

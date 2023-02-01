@@ -2,16 +2,13 @@ package com.rafaelvelazquez.macropayapp.ui.activity
 
 import androidx.lifecycle.Observer
 import android.os.Bundle
+import com.rafaelvelazquez.macropayapp.R
 import com.rafaelvelazquez.macropayapp.data.action.LoginResult
 import com.rafaelvelazquez.macropayapp.databinding.ActivityLoginBinding
 import com.rafaelvelazquez.macropayapp.di.injector
 import com.rafaelvelazquez.macropayapp.launcher.MainActivityArgs
-import com.rafaelvelazquez.macropayapp.utils.validEmail
-import com.rafaelvelazquez.macropayapp.utils.validatePassWord
-import com.rafaelvelazquez.macropayapp.utils.viewModel
+import com.rafaelvelazquez.macropayapp.utils.*
 import com.rafaelvelazquez.macropayapp.viewmodel.LoginViewModel
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.RequestBody.Companion.toRequestBody
 
 class LoginActivity : BaseFragmentActivity() {
 
@@ -27,6 +24,7 @@ class LoginActivity : BaseFragmentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         bindViewModel()
+        title = resources.getString(R.string.title_activity_login)
         configureWidgets()
     }
 
@@ -34,18 +32,26 @@ class LoginActivity : BaseFragmentActivity() {
         passwordFocusListener()
         emailFocusListener()
         configureLoginButton()
+        enableButton()
+    }
+
+    private fun enableButton() {
+        binding.apply {
+            login.isEnabled = !textInputEditTextUser?.text.isNullOrBlank() &&
+                    !textInputEditTextPassword?.text.isNullOrBlank()
+        }
     }
 
     private fun configureLoginButton() {
-        binding.login.setOnClickListener {
-            loginViewModel.loginUser(
-                user = binding.username.text.toString().toRequestBody(
-                    binding.username.text.toString().toMediaTypeOrNull()
-                ),
-                password = binding.password.text.toString().toRequestBody(
-                    binding.password.text.toString().toMediaTypeOrNull()
-                )
-            )
+        binding.apply {
+            login.apply {
+                setOnClickListener {
+                    loginViewModel.loginUser(
+                        user = binding.textInputEditTextUser?.text.toRequestBody(),
+                        password = binding.textInputEditTextPassword?.text.toRequestBody()
+                    )
+                }
+            }
         }
     }
 
@@ -67,26 +73,30 @@ class LoginActivity : BaseFragmentActivity() {
         }
     }
 
-    private fun passwordFocusListener() {
-        binding.password.apply {
+
+    private fun emailFocusListener() {
+        binding.textInputEditTextUser?.apply {
             setOnFocusChangeListener { _, focused ->
                 if (!focused) {
-                    text.validatePassWord()?.let {
-                        showError(it)
+                    text?.validEmail()?.let {
+                        binding.textInputLayoutUser?.error = it
                     }
                 }
             }
         }
     }
 
-    private fun emailFocusListener() {
-        binding.username.apply {
+    private fun passwordFocusListener() {
+        binding.textInputEditTextPassword?.apply {
             setOnFocusChangeListener { _, focused ->
                 if (!focused) {
-                    text.validEmail()?.let {
-                        showError(it)
+                    text?.validatePassWord()?.let {
+                        binding.textInputLayoutPassword?.error = it
                     }
                 }
+            }
+            afterTextChanged {
+                enableButton()
             }
         }
     }

@@ -1,21 +1,23 @@
 package com.rafaelvelazquez.macropayapp.utils
 
 import android.text.Editable
+import android.text.TextWatcher
 import android.util.Patterns
+import android.widget.EditText
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 
 
 fun Editable.validatePassWord(): String? {
-    if (this.length < 8) {
-        return "Minimum 8 Character Password"
+    if (this.length < 6) {
+        return "Minimum 6 Character Password"
     }
     if (!this.matches(".*[A-Z].*".toRegex())) {
         return "Must Contain 1 Upper-case Character"
     }
     if (!this.matches(".*[a-z].*".toRegex())) {
         return "Must Contain 1 Lower-case Character"
-    }
-    if (!this.matches(".*[@#\$%^&+=].*".toRegex())) {
-        return "Must Contain 1 Special Character (@#\$%^&+=)"
     }
     return null
 }
@@ -27,7 +29,20 @@ fun Editable.validEmail(): String? {
     return null
 }
 
-//fun <T> Single<T>.applySchedulers(): Single<T> {
-//    return subscribeOn(Schedulers.io())
-//        .observeOn(AndroidSchedulers.mainThread())
-//}
+fun Editable?.toRequestBody(): RequestBody {
+    return this.toString().toRequestBody(
+        this.toString().toMediaTypeOrNull()
+    )
+}
+
+fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
+    this.addTextChangedListener(object : TextWatcher {
+        override fun afterTextChanged(editable: Editable?) {
+            afterTextChanged.invoke(editable.toString())
+        }
+
+        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+
+        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+    })
+}
