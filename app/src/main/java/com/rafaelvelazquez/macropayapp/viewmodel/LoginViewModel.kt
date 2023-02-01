@@ -2,22 +2,23 @@ package com.rafaelvelazquez.macropayapp.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.rafaelvelazquez.macropayapp.data.action.LoginAction
-import com.rafaelvelazquez.macropayapp.repository.AppRepository
+import android.util.Patterns
+import com.rafaelvelazquez.macropayapp.data.action.LoginResult
+import com.rafaelvelazquez.macropayapp.repository.LoginRepository
 import okhttp3.RequestBody
 import javax.inject.Inject
 
-class MainViewModel @Inject constructor(
-    private val repository: AppRepository
+class LoginViewModel @Inject constructor(
+    private val loginRepository: LoginRepository
 ) : AppBaseViewModel() {
 
-    private val _action = MutableLiveData<LoginAction>()
+    private val _loginResult = MutableLiveData<LoginResult>()
+    fun getLoginResul(): LiveData<LoginResult> = _loginResult
 
-    fun getLoginAction() = _action as LiveData<LoginAction>
 
-    fun loginUser(user: RequestBody, password:RequestBody) {
+    fun loginUser(user: RequestBody, password: RequestBody) {
         disposable.add(
-            repository.loginUser(
+            loginRepository.loginUser(
                 user,
                 password
             )
@@ -25,7 +26,7 @@ class MainViewModel @Inject constructor(
                 .doFinally { showProgress.value = false }
                 .subscribe(
                     {
-                        _action.value = LoginAction.Success(it)
+                        _loginResult.value = LoginResult.Success(it)
                     },
                     {
                         showError.value = it.message
@@ -33,5 +34,4 @@ class MainViewModel @Inject constructor(
                 )
         )
     }
-
 }

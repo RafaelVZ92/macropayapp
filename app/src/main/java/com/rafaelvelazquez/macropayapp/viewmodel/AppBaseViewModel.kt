@@ -9,10 +9,10 @@ abstract class AppBaseViewModel : ViewModel() {
     protected val disposable = CompositeDisposable()
 
     protected val showProgress = MutableLiveData<Boolean>()
-    protected val showError = MutableLiveData<Throwable>()
+    protected val showError = MutableLiveData<String>()
 
     fun getShowProgress(): LiveData<Boolean> = showProgress
-    fun getShowError(): LiveData<Throwable> = showError
+    fun getShowError(): LiveData<String> = showError
 
     override fun onCleared() {
         disposable.clear()

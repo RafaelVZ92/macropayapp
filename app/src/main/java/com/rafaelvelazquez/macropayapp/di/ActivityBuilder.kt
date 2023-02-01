@@ -1,6 +1,6 @@
 package com.rafaelvelazquez.macropayapp.di
 
-import com.rafaelvelazquez.macropayapp.view.activity.MainActivity
+import com.rafaelvelazquez.macropayapp.ui.activity.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
