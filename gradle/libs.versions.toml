@@ -65,3 +65,4 @@ androidx-navigation-ui = { module = "androidx.navigation:navigation-ui-ktx", ver
 # Kotlin Libaries
 kotlin-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-serialization-plugin = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
+

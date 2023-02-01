@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.rafaelvelazquez.macropayapp.data.action.LoginResult
 import com.rafaelvelazquez.macropayapp.databinding.ActivityLoginBinding
 import com.rafaelvelazquez.macropayapp.di.injector
+import com.rafaelvelazquez.macropayapp.launcher.MainActivityArgs
 import com.rafaelvelazquez.macropayapp.utils.validEmail
 import com.rafaelvelazquez.macropayapp.utils.validatePassWord
 import com.rafaelvelazquez.macropayapp.utils.viewModel
@@ -57,8 +58,12 @@ class LoginActivity : BaseFragmentActivity() {
     }
 
     private fun handleAccountState(loginResult: LoginResult) {
-        when(loginResult){
-            is LoginResult.Success -> println(loginResult.response)
+        when (loginResult) {
+            is LoginResult.Success -> startActivity(
+                MainActivityArgs(
+                    loginResult.response
+                ).intent(this)
+            )
         }
     }
 

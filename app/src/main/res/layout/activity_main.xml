@@ -6,13 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.MainActivity">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textView_great"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Good Afternoon: "
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_marginVertical="16dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Good Afternoon: "/>
+
+    <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_marginEnd="8dp"
+        android:layout_marginVertical="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/textView_great"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Rafael Velazquez Sanchez"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

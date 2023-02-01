@@ -67,4 +67,6 @@ dependencies {
 
     implementation(libs.okhttp)
     implementation(libs.okhttp.logging)
+
+    implementation 'com.auth0.android:jwtdecode:2.0.2'
 }
