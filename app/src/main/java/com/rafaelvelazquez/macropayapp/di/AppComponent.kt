@@ -14,7 +14,8 @@ import javax.inject.Singleton
         AndroidSupportInjectionModule::class,
         AppMainModule::class,
         ActivityBuilder::class,
-        ApiServiceModule::class
+        ApiServiceModule::class,
+        MapperModule::class
     ]
 )
 interface AppComponent :

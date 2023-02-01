@@ -7,11 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.qrcode.QRCodeWriter
 import com.rafaelvelazquez.macropayapp.databinding.ActivityMainBinding
-import com.rafaelvelazquez.macropayapp.di.injector
 import com.rafaelvelazquez.macropayapp.launcher.MainActivityArgs
 import com.rafaelvelazquez.macropayapp.launcher.MainActivityArgs.Companion.EXTRAS
-import com.rafaelvelazquez.macropayapp.utils.viewModel
-import com.rafaelvelazquez.macropayapp.viewmodel.MainViewModel
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,15 +21,17 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
-    private val viewModel: MainViewModel by viewModel {
-        injector.mainViewModel
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         configureUserName()
         configureBarCode()
+        configureTokenText()
+    }
+
+    private fun configureTokenText() {
+        binding.materialTextViewToken.text =
+            extras?.dashboardData?.token
     }
 
     private fun configureUserName() {
@@ -43,7 +42,7 @@ class MainActivity : AppCompatActivity() {
     private fun configureBarCode() {
         val writer = QRCodeWriter()
         val bitMatrix = writer.encode(
-            extras?.dashboardData?.solicitud,
+            extras?.dashboardData?.token,
             BarcodeFormat.QR_CODE,
             512,
             512)

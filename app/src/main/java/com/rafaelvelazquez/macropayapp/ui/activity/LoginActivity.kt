@@ -61,7 +61,7 @@ class LoginActivity : BaseFragmentActivity() {
         when (loginResult) {
             is LoginResult.Success -> startActivity(
                 MainActivityArgs(
-                    loginResult.response
+                    loginResult.domainModel
                 ).intent(this)
             )
         }

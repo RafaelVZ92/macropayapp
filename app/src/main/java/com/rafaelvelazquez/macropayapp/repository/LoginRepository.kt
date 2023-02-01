@@ -1,6 +1,7 @@
 package com.rafaelvelazquez.macropayapp.repository
 
-import com.rafaelvelazquez.macropayapp.data.remote.LoginResponse
+import com.rafaelvelazquez.macropayapp.data.domain.DashboardDomainModel
+import com.rafaelvelazquez.macropayapp.data.mapper.DashboardMapper
 import com.rafaelvelazquez.macropayapp.retrofit.RestServiceApi
 import com.rafaelvelazquez.macropayapp.utils.applySchedulers
 import dagger.Reusable
@@ -10,16 +11,19 @@ import javax.inject.Inject
 
 @Reusable
 class LoginRepository @Inject constructor(
-    private val restServiceApi: RestServiceApi
+    private val restServiceApi: RestServiceApi,
+    private val mapper: DashboardMapper
 ) {
 
     fun loginUser(
         user: RequestBody,
         password: RequestBody
-    ): Single<LoginResponse> {
+    ): Single<DashboardDomainModel> {
         return restServiceApi.loginUSer(
             user,
             password
-        ).applySchedulers()
+        ).map { response ->
+            mapper.map(response)
+        }.applySchedulers()
     }
 }
