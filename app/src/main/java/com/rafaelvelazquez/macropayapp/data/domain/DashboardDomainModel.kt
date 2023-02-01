@@ -6,5 +6,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class DashboardDomainModel(
     val titular: String,
-    val token: String
+    val token: String,
+    val body: String
 ): Parcelable

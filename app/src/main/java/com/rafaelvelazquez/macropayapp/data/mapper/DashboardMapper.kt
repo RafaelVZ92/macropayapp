@@ -25,7 +25,8 @@ class DashboardMapper @Inject constructor() : Mapper<LoginResponse, DashboardDom
     private fun mapDashboardDomainModel(token: String) =
         DashboardDomainModel(
             handleDashboardData(token).titular,
-            token
+            token,
+            decodeToken(token)
         )
 
     private fun handleDashboardData(token: String): DashboardResponse {

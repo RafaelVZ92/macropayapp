@@ -6,7 +6,7 @@ import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.zxing.BarcodeFormat
-import com.google.zxing.qrcode.QRCodeWriter
+import com.google.zxing.pdf417.PDF417Writer
 import com.rafaelvelazquez.macropayapp.R
 import com.rafaelvelazquez.macropayapp.databinding.ActivityMainBinding
 import com.rafaelvelazquez.macropayapp.launcher.MainActivityArgs
@@ -67,12 +67,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun configureBarCode() {
-        val writer = QRCodeWriter()
+        val writer = PDF417Writer()
         val bitMatrix = writer.encode(
-            extras?.dashboardData?.token,
-            BarcodeFormat.QR_CODE,
-            DIMEN,
-            DIMEN
+            extras?.dashboardData?.body,
+            BarcodeFormat.PDF_417,
+            900, 500
         )
         val width = bitMatrix.width
         val height = bitMatrix.height
@@ -87,9 +86,4 @@ class MainActivity : AppCompatActivity() {
             bitmap
         )
     }
-
-    private companion object {
-        const val DIMEN = 512
-    }
-
 }
