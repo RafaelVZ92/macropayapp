@@ -19,6 +19,8 @@ junit = "junit:junit:4.13.2"
 androidx-test-espresso = "androidx.test.espresso:espresso-core:3.5.0"
 material = "com.google.android.material:material:1.6.1"
 gson = "com.google.code.gson:gson:2.9.1"
+# zxing
+zxing = "com.google.zxing:core:3.2.1"
 
 androidx-cardview = "androidx.cardview:cardview:1.0.0"
 androidx-constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.4"
@@ -65,4 +67,5 @@ androidx-navigation-ui = { module = "androidx.navigation:navigation-ui-ktx", ver
 # Kotlin Libaries
 kotlin-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-serialization-plugin = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
+
 

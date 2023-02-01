@@ -7,28 +7,27 @@
     tools:context=".ui.activity.MainActivity">
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textView_great"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Good Afternoon: "
+        android:id="@+id/materialTextView_userName"
         style="@style/TextAppearance.AppCompat.Title"
-        android:layout_marginVertical="16dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Good Afternoon: "/>
-
-    <com.google.android.material.textview.MaterialTextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:gravity="left"
         android:text="Hello World!"
-        style="@style/TextAppearance.AppCompat.Title"
-        android:layout_marginEnd="8dp"
-        android:layout_marginVertical="16dp"
+        android:textAlignment="gravity"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView_great"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Rafael Velazquez Sanchez"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView_barCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="16dp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/materialTextView_userName"
+        app:layout_constraintTop_toBottomOf="@+id/materialTextView_userName"
+        tools:src="@drawable/ic_launcher_background" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
